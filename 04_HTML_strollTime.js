@@ -6,19 +6,16 @@ const IDEAL_TEMP = 20;
 
 let minutes;
 
-if (itsRaining) {
-    minutes = 0;
-} else if (temperature < 0 || temperature > 35) {
+if (itsRaining || temperature < 0 || temperature > 35) {
     minutes = 0;
 } else {
-    if (temperature === 20) {
-        minutes = 20;
-    } else if (temperature < 20) {
-        minutes = (temperature - IDEAL_TEMP) + IDEAL_TEMP;
+    if (temperature <= IDEAL_TEMP) {
+        minutes = temperature;
     } else if (temperature > 20) {
         minutes = IDEAL_TEMP - (temperature - IDEAL_TEMP);
     }
 };
+
 
 
 /* Техническое задание
