@@ -1,4 +1,4 @@
-let userWord = prompt("Please enter a word: ");
+let userWord = prompt("Please enter a word: ").toLowerCase();
 let arrVowels = ['a', 'e', 'i', 'o', 'u'];
 let vowelCount = 0;
 
