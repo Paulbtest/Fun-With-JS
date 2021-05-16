@@ -1,4 +1,4 @@
-let userNumber = Number(prompt("Введите целое положительное двузначное число: "));
+let userNumber = Number(prompt("Введите целое положительное трехзначное число: "));
 
 if (isNaN(userNumber)) {
     console.log("Ошибка. Введеное значение не является числом.")
