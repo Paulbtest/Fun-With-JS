@@ -43,7 +43,12 @@ const movieList = [
     }
 ];
 
-const moviesBefore2000 = movieList.filter(movie => movie.year < 2000);
+const titles = movies => movies.map(movie => movie.title);
+const older = movie => movie.year < 2000;
+const filter = (movies, fct) => movies.filter(fct);
+
+const moviesBefore2000 = titles(filter(movieList, older));
+
 
 // TODO: Make an array of the titles of movies released before 2000
 console.log(moviesBefore2000);
