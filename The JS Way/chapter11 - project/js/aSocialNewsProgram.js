@@ -23,6 +23,10 @@ let showLinks = function() { //used to show stored links
     return currentLink;
 };
 
+let removeLinks = function(index) { //used to remove stored links    
+    
+    return linksRepository.splice(index - 1, 1);  
+};
 
 while (userInput != 0) { 
 
@@ -45,7 +49,8 @@ while (userInput != 0) {
             linksRepository.push(newAccount);
             break;
         case 3:
-            console.log("Третий пошел");
+            let toBeRemoved = prompt("Enter index of the link to be removed (between 1 and 3): ");
+            removeLinks(toBeRemoved);
             break;
         case 0:
             console.log("Have a nice day!");
