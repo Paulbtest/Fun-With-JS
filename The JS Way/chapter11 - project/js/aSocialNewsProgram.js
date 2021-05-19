@@ -8,17 +8,19 @@ class userLink {
         this.author = author;
     }
 
-    describe() {
-        return console.log(`${this.name} (${this.link}). Author: ${this.author}`);
-    }
+    // describe() {
+    //     return console.log(`${this.name} (${this.link}). Author: ${this.author}`);
+    // }
 };
 
 let showLinks = function() { //used to show stored links
-    
-    for (let i = 0; i < linksRepository.length; i++) {
+    let currentLink = "";
 
-       return i++ + ':' + ' ' + linksRepository[i].describe();
+    for (let i = 0; i < linksRepository.length; i++) {
+        currentLink += (i) + 1 + ':' + ' ' + `${linksRepository[i].name} (${linksRepository[i].link}). Author: ${linksRepository[i].author}` + "\n";
     };
+
+    return currentLink;
 };
 
 
