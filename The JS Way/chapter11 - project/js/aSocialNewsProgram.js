@@ -1,6 +1,29 @@
 let userInput = 5;
+let linksRepository = []; //Used to store objects with info about links
+
+class userLink {
+    constructor(name, link, author) {
+        this.name = name;
+        this.link = link;
+        this.author = author;
+    }
+
+    describe() {
+        return console.log(`${this.name} (${this.link}). Author: ${this.author}`);
+    }
+};
+
+let showLinks = function() { //used to show stored links
+    
+    for (let i = 0; i < linksRepository.length; i++) {
+
+       return i++ + ':' + ' ' + linksRepository[i].describe();
+    };
+};
+
 
 while (userInput != 0) { 
+
     userInput = 
     Number(prompt("Choose an option: " + "\n" + 
             "1: Show Links" + "\n" + 
@@ -9,11 +32,15 @@ while (userInput != 0) {
             "0: Quit" + "\n"));
 
     switch(userInput) {
-        case 1: 
-            console.log("Первый пошел");
+        case 1:
+            alert(showLinks()); 
             break;
         case 2:
-            console.log("Второй пошел");
+            let resourceName = prompt("Enter resource name: ");
+            let resourceLink = prompt("Enter the resource link: ");
+            let resourceAuthor = prompt("Enter author's name: ");
+            let newAccount = new userLink(resourceName, resourceLink, resourceAuthor);
+            linksRepository.push(newAccount);
             break;
         case 3:
             console.log("Третий пошел");
@@ -21,13 +48,13 @@ while (userInput != 0) {
         case 0:
             console.log("Have a nice day!");
             break;
-        case isNaN(true):
+/*         case isNaN(true):
             console.log("Введеное значение не является числом.")
             userInput = 5
             break;
         case "":
             userInput = 5;
-            break;
+            break; */                                                     //Not working
     };
 };
 
