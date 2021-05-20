@@ -1,20 +1,20 @@
-let userInput = 5;
+let userInput;
 let linksRepository = []; //Used to store objects with info about links
 
-class userLink {
+class userLink {      //constructs an object to store inside the array
     constructor(name, link, author) {
         this.name = name;
         this.link = link;
         this.author = author;
     }
-
-    // describe() {
-    //     return console.log(`${this.name} (${this.link}). Author: ${this.author}`);
-    // }
 };
 
 let showLinks = function() { //used to show stored links
     let currentLink = "";
+
+    if (linksRepository.length === 0) {
+        return "No links stored yet."
+    }
 
     for (let i = 0; i < linksRepository.length; i++) {
         currentLink += (i) + 1 + ':' + ' ' + `${linksRepository[i].name} (${linksRepository[i].link}). Author: ${linksRepository[i].author}` + "\n";
@@ -28,43 +28,45 @@ let removeLinks = function(index) { //used to remove stored links
     return linksRepository.splice(index - 1, 1);  
 };
 
-while (userInput != 0) { 
+while (userInput !== "0") { 
 
     userInput = 
-    Number(prompt("Choose an option: " + "\n" + 
+    prompt("Choose an option: " + "\n" + 
             "1: Show Links" + "\n" + 
             "2: Add a link" + "\n" +
             "3: Remove a link" + "\n" +
-            "0: Quit" + "\n"));
+            "0: Quit" + "\n");
 
     switch(userInput) {
-        case 1:
+        case "1":
             alert(showLinks()); 
             break;
-        case 2:
+        case "2":
             let resourceName = prompt("Enter resource name: ");
             let resourceLink = prompt("Enter the resource link: ");
             let resourceAuthor = prompt("Enter author's name: ");
+
+            if (!resourceLink.startsWith("http://") && !resourceLink.startsWith("https://")) {
+                resourceLink = "http://" + resourceLink;
+            };
+
             let newAccount = new userLink(resourceName, resourceLink, resourceAuthor);
             linksRepository.push(newAccount);
             break;
-        case 3:
-            let toBeRemoved = prompt("Enter index of the link to be removed (between 1 and 3): ");
-            removeLinks(toBeRemoved);
+        case "3":
+            let toBeRemoved; 
+            if (linksRepository.length === 0) {
+                toBeRemoved = alert("No links to remove");
+            } else {
+                toBeRemoved = prompt(`Enter index of the link to be removed (between 1 and ${linksRepository.length}). Type ${linksRepository.length + 1} to cancel: `);
+                removeLinks(toBeRemoved)
+            };
+
             break;
-        case 0:
-            console.log("Have a nice day!");
-            break;
-/*         case isNaN(true):
-            console.log("Введеное значение не является числом.")
-            userInput = 5
-            break;
-        case "":
-            userInput = 5;
-            break; */                                                     //Not working
     };
 };
 
+alert("Have a nice day!");
 
 /* Functional requirements
 • A link is defined by its title, its URL and its author(submitter).
